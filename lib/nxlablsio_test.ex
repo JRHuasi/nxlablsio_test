@@ -18,7 +18,7 @@ defmodule NxlablsioTest do
   """
 
   # Función que maneja las solicitudes basadas en la clave dada (:name, :address, :birth).
-  def nombre_funcion(:name) do
+  def mostrar(:name) do
     # Decodificamos el JSON y extraemos el nombre y apellido si es posible.
     with {:ok, %{"firstName" => first_name, "lastName" => last_name}} <- Jason.decode(@json) do
       "#{first_name} #{last_name}"
@@ -27,7 +27,7 @@ defmodule NxlablsioTest do
     end
   end
 
-  def nombre_funcion(:address) do
+  def mostrar(:address) do
     # Decodificamos el JSON y extraemos la dirección completa si es posible.
     with {:ok, %{"address" => %{"streetAddress" => street, "city" => city, "state" => state, "postalCode" => postalCode}}} <- Jason.decode(@json) do
       "#{street} #{city} #{state} #{postalCode}"
@@ -36,7 +36,7 @@ defmodule NxlablsioTest do
     end
   end
 
-  def nombre_funcion(:birth) do
+  def mostrar(:birth) do
     # Decodificamos el JSON y calculamos el año de nacimiento basado en la edad.
     with {:ok, %{"age" => age}} <- Jason.decode(@json),
          {:ok, current_year} <- Date.utc_today() |> Date.to_iso8601() |> String.split("-") |> hd() |> Integer.parse() do
