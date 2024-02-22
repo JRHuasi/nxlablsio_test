@@ -17,7 +17,6 @@ defmodule NxlablsioTestTest do
   end
 
   # Test para verificar que la función calcula el año de nacimiento correctamente.
-  # Nota: Este test puede necesitar ajustes para mantenerse actualizado con el paso del tiempo.
   test "mostrar with :birth returns birth year" do
     current_year = Date.utc_today().year
     expected_birth_year = Integer.to_string(current_year - 27) # Usamos la edad directamente desde el JSON.
